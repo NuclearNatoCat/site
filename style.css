@@ -1,0 +1,232 @@
+:root {
+    --bg: rgb(0 35 0);
+    --neon__green: rgb(0 255 0);
+    --font__main: var(--neon__green);
+    --header__bg: rgb(0 47 0);
+    --filter: radial-gradient(transparent, rgba(0, 0, 0, 0.75));
+    --lines: repeating-linear-gradient(rgba(0, 0, 0, .2), transparent, rgba(0, 0, 0, .2) 1.25%);
+    --btn__bg: rgb(0 83 0);
+}
+
+@font-face {
+    font-family: VT323;
+    src: url(vt323.ttf);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+}
+
+a {
+    color: var(--font__main);
+    display: block;
+}
+
+body {
+    background: var(--bg);
+    font-family: VT323;
+    overflow: clip;
+    color: var(--font__main);
+    user-select: none;
+    height: 100vh;
+    width: 100vw;
+}
+
+#title {
+    --main: rgb(0, 255, 0);
+    --secondary: rgb(0 206 0);
+    --tertiary: rgb(0 151 0);
+    --quaternary: rgb(0 114 0);
+    --quinternary: rgb(0 64 0);
+    --sexternary: rgb(0 43 0);
+    --background: rgb(0 80 0);
+    --text: "NuclearNatoCat";
+    --size: 15vw;
+    font-size: var(--size);
+    color: var(--tertiary);
+    position: relative;
+    text-shadow: .75vw .75vw 0 var(--quaternary);
+    background: var(--background);
+    box-shadow: 0 0 10px var(--background);
+    animation: 1s linear 0.01s infinite alternate title;
+}
+
+#title::before {
+    position: absolute;
+    content: var(--text);
+    transform: translate(-1.5vw, -1.5vw);
+    color: var(--main);
+    text-shadow: .75vw .75vw 0 var(--secondary);
+    z-index: 3;
+}
+
+#title::after {
+    position: absolute;
+    left: 0;
+    right: 0;
+    content: var(--text);
+    transform: translate(1.5vw, 1.5vw);
+    color: var(--quinternary);
+    text-shadow: .75vw .75vw 0 var(--sexternary);
+    z-index: -1;
+}
+
+#subtitle {
+    --background: rgb(0 60 0);
+    --color: rgb(0 224 0);
+    font-size: 2.75vw;
+    background: var(--background);
+    box-shadow: 0 0 5px var(--background);
+    text-shadow: 0 0 3px var(--neon__green);
+    animation: 5s ease-in-out 0.01s forwards subtitle;
+}
+
+#section-header {
+    background: var(--header__bg);
+    padding-top: 5px;
+    z-index: -1;
+    box-shadow: 0 0 5px var(--header__bg);
+    text-shadow: 0 0 2px var(--neon__green);
+}
+
+hr {
+    border-color: var(--neon__green);
+    box-shadow: 0 0 3px var(--neon__green);
+    position: relative;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    margin-top: 15px;
+}
+
+#filter {
+    height: 100vh;
+    width: 100vw;
+    background: var(--filter);
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1001;
+    pointer-events: none;
+}
+
+#lines {
+    height: 200vh;
+    width: 100vw;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: var(--lines);
+    z-index: 1002;
+    animation: 25s linear 0.01s infinite forwards lines;
+    pointer-events: none;
+}
+
+p {
+    font-family: VT323;
+    width: 100vw;
+    text-wrap: wrap;
+    padding: 3px 0;
+    text-shadow: 0 0 1.5px var(--neon__green);
+}
+
+li {
+    --background: rgb(0 60 0);
+    --hover__background: rgb(0 90 0);
+    font-family: VT323;
+    width: 100vw;
+    text-wrap: wrap;
+    padding: 3px 1px;
+    margin: 3px 0;
+    text-shadow: 0 0 1.5px var(--neon__green);
+    background: var(--background);
+    box-shadow: 0 0 10px var(--background);
+    transition-duration: 1s;
+}
+
+li:hover {
+    background: var(--hover__background);
+    box-shadow: 0 0 10px var(--hover__background);
+}
+
+button {
+    font-family: VT323;
+    width: 90vw;
+    text-wrap: wrap;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    margin-top: 3px;
+    margin-bottom: 3px;
+    text-shadow: 0 0 1px var(--neon__green);
+    color: var(--neon__green);
+    border: 1px solid var(--neon__green);
+    background: var(--btn__bg);
+    box-shadow: 0 0 5px var(--neon__green);
+    transition-duration: .5s;
+    cursor: pointer;
+}
+
+button:hover {
+    filter: brightness(75%);
+}
+
+button:active {
+    filter: brightness(120%);
+}
+
+center {
+    width: 100vw;
+    height: 100vh;
+    overflow-x: clip;
+    overflow-y: auto;
+}
+
+#filters {
+    overflow: clip;
+    height: 100vh;
+    width: 100vw;
+    position: absolute;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+}
+
+/*I use a bunch of animations here; this removes them if you dont want the movement*/
+@media (prefers-reduced-motion) {
+    #filters {
+        display: none;
+    }
+    #title {
+        animation: none;
+    }
+    #subtitle {
+        animation: none;
+        letter-spacing: 5px;
+    }
+    body {
+        filter: brightness(75%);
+    }
+}
+
+@keyframes lines {
+    to {
+        transform: translateY(-100vh);
+    }
+}
+
+@keyframes title {
+    from {
+        filter: blur(2px) brightness(115%);
+    }
+    to {
+        filter: none;
+    }
+}
+
+@keyframes subtitle {
+    to {
+        letter-spacing: 5px;
+    }
+}
